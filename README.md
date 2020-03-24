@@ -1,17 +1,44 @@
-# Barebones React/TypeScript/Express/Sass Boilerplate
-This project is a starting point for a TypeScript based React app that also has a local API server using express.
+# Stolen Cars Compplain App
 
-There are 2 different Webpack configurations. One for the server and one for the client.
+## Note: Authentication is not added, only API Endpoints are there
 
-## Server
-The server build process compiles the TypeScript files found in `/src/server` into a single bundled JavaScript file located in the `/dist` directory.
+Run the project --> npm run dev
 
-## Client
-The client build process compiles the React app located in `/src/client` into a bundled located at `/public/js/app.js`.
+### API Endpoints
 
-The client configuration will also build the Sass files found at `/src/client/scss`. The App component imports the `app.scss` file which already includes an import for Bootstrap.
+```
+/api/signin
+/api/register
+/api/logout/api/:id
+/api/complains
+/api/complain
+/api/complains/:id
+```
 
-## Running the project
-In order to run the server, use `npm run dev`, and the server will start on port 3000 (http://localhost:3000). 
+### Database Schema
 
-Webpack will watch the files. Once you save a file, you can refresh your browser to ensure you got the updated client files. If you only change server files, you *shouldn't* need to refresh.
+```
+CREATE extension "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS complains (
+	id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	car_model text NOT NULL,
+	notes jsonb,
+	is_completed BOOLEAN DEFAULT FALSE NOT NULL,
+	created_at TIMESTAMP without time zone DEFAULT now() NOT NULL,
+	CONSTRAINT complains_pkey PRIMARY KEY ( id )
+);
+
+CREATE TABLE IF NOT EXISTS users (
+	id uuid NOT NULL DEFAULT uuid_generate_v4(),
+	name VARCHAR(100),
+	email text UNIQUE NOT NULL,
+	hash VARCHAR(100) NOT NULL,
+	created_at TIMESTAMP without time zone DEFAULT now() NOT NULL,
+	CONSTRAINT users_pkey PRIMARY KEY ( id ),
+	fk_complains_id uuid references complains (id)
+);
+
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS complains;
+```
