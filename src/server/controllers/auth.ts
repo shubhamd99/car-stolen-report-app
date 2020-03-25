@@ -42,6 +42,7 @@ export const handleSignin = async (req: Request, res: Response, db: any, bcrypt:
 		return res.status(400).json('incorrect form submission');
 	}
 	
+	// select * from complains where id not in ( select fk_complains_id from users where fk_complains_id is not null );
 	const subquery = db.select('fk_complains_id').from('users').whereNotNull('fk_complains_id');
 	const getUnAssignedComplains = await db('complains').whereNotIn('id', subquery);
 	// console.log("getUnAssignedComplains", getUnAssignedComplains);

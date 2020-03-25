@@ -42,3 +42,5 @@ CREATE TABLE IF NOT EXISTS users (
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS complains;
 ```
+
+![alt txt](https://i.imgur.com/qqLd4JY.png)

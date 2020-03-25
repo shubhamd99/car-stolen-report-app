@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 export const handlePostComplains = async (req: Request, res: Response, db: any) => {
 	const { carModelNumber, note } = req.body;
 
+	// select * from users where status = 'online' and fk_complains_id is null;
 	const officersOnline = await db('users').where({ status: 'online', fk_complains_id: null });
 	// console.log("driversOnline", officersOnline)
 
@@ -45,9 +46,11 @@ export const handlePostComplains = async (req: Request, res: Response, db: any) 
 
 // Fetch Complains
 export const handleGetComplains = (req: Request, res: Response, db: any) => {
-	db.select('*').from('complains')
+	// select complains.*, users.* from complains left join users on complains.id = users.fk_complains_id;
+	db.select('complains.*', 'users.name as officer_name', 'users.email as officer_email', 'users.status as officer_status', 'users.id as officer_user_id')
+	.from('complains').leftJoin('users', 'complains.id', 'users.fk_complains_id')
 	.then((complains: any[]) => {
-		if (complains.length){
+		if (complains.length) {
 			res.json(complains)
 		} else {
 			res.status(400).json('Complains Not Found')
@@ -63,6 +66,7 @@ export const handleUpdateComplainsStatus = async (req: Request, res: Response, d
 		return res.status(400).json('incorrect form submission');
 	}
 
+	// select * from users where fk_complains_id = id;
 	const officerWithLoad = await db('users').where('fk_complains_id', id);
 	// console.log("officerWithLoad", officerWithLoad);
 
