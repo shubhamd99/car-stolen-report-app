@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bcrypt from 'bcrypt';
 import * as knex from 'knex';
 import { handleSignin, handleRegister, handleLogout } from './controllers/auth';
-import { handleGetComplains, handlePostComplains, handleUpdateComplainsStatus } from './controllers/complains';
+import { handleGetComplains, handlePostComplains, handleUpdateComplainsStatus, handleAssignComplain } from './controllers/complains';
 
 const db = knex({
     client: 'pg',
@@ -31,5 +31,6 @@ router.put('/logout/:id', (req, res) => { handleLogout(req, res, db, bcrypt) });
 router.get('/complains', (req, res) => { handleGetComplains(req, res, db) });
 router.post('/complains', (req, res) => { handlePostComplains(req, res, db) });
 router.put('/complains/:id', (req, res) => { handleUpdateComplainsStatus(req, res, db) });
+router.put('/police/assign/:id', (req, res) => { handleAssignComplain(req, res, db) });
 
 export default router;

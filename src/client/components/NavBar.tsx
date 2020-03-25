@@ -23,7 +23,7 @@ const NavBar: React.FC<INavBarProps> = (props) => {
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto">
                     <li className={props.page === "home" ? "nav-item active" : "nav-item "}><AdapterLink to="/home" className="nav-link">Home</AdapterLink></li>
-                    <li className={props.page === "police" ? "nav-item active" : "nav-item "}><AdapterLink to="/police/123" className="nav-link">Officers</AdapterLink></li>
+                    <li className={props.page === "police" ? "nav-item active" : "nav-item "}><AdapterLink to="/police/3a8bb49d-ae78-4416-adf9-74f1a0a440b3" className="nav-link">Officers</AdapterLink></li>
                     <li className="nav-item"><AdapterLink to="/" className="nav-link">Contact</AdapterLink></li>
                     <li className="nav-item cta mr-md-2"><a href="https://github.com/shubhamd99/car-stolen-report-app"
                         target="_blank" className="nav-link">{props.name ? "Logout" : "Github"}</a></li>

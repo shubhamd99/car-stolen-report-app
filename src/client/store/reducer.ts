@@ -1,4 +1,5 @@
-import { ADD_COMPLAINS, LOAD_COMPLAINS_LOADING, LOAD_COMPLAINS_ERROR, POST_COMPLAIN_SUCCESS, POST_COMPLAIN_FAILURE } from './types';
+import { ADD_COMPLAINS, LOAD_COMPLAINS_LOADING, LOAD_COMPLAINS_ERROR, POST_COMPLAIN_SUCCESS, POST_COMPLAIN_FAILURE,
+    COMPLAIN_STATUS_CHANGE_FAILURE, COMPLAIN_STATUS_CHANGE_SUCCESS } from './types';
 
 interface InitialState {
     complains: any[];
@@ -39,7 +40,8 @@ export const reducer = (state: any, action: any) => {
                         notes: value.notes,
                         isCompleted: value.is_completed,
                         customerName: value.customer_name,
-                        customerPhoneNumber: value.customer_phone_number
+                        customerPhoneNumber: value.customer_phone_number,
+                        createdAt: value.created_at
                     });
 
                     if (value.officer_user_id) {
@@ -73,6 +75,14 @@ export const reducer = (state: any, action: any) => {
             return {
                 ...state,
                 postComplainError: action.payload
+            }
+        case COMPLAIN_STATUS_CHANGE_SUCCESS:
+            return {
+                ...state,
+            }
+        case COMPLAIN_STATUS_CHANGE_FAILURE:
+            return {
+                ...state,
             }
         default:
             return state;

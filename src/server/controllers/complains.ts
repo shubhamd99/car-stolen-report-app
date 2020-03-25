@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import * as moment from 'moment';
 
 // Create Complains
 export const handlePostComplains = async (req: Request, res: Response, db: any) => {
@@ -14,6 +15,7 @@ export const handlePostComplains = async (req: Request, res: Response, db: any) 
 			notes: note,
 			customer_name: customerName,
 			customer_phone_number: cutomerPhoneNumber,
+			created_at: moment().toISOString(),
 		})
 		.into('complains')
 		.returning('*')
@@ -70,7 +72,7 @@ export const handleUpdateComplainsStatus = async (req: Request, res: Response, d
 
 	// select * from users where fk_complains_id = id;
 	const officerWithLoad = await db('users').where('fk_complains_id', id);
-	// console.log("officerWithLoad", officerWithLoad);
+	// console.log("officerWithLoad", officerWithLoad, isCompleted);
 
 	db.transaction((trx: any) => {
 		trx('complains').where({ id })
@@ -104,3 +106,21 @@ export const handleUpdateComplainsStatus = async (req: Request, res: Response, d
 	.catch((err: any) => res.status(400).json('Unable to update the complain status'))
 	
 }
+
+// Update Complains Status
+export const handleAssignComplain = async (req: Request, res: Response, db: any) => {
+	const { id, complainId } = req.body;
+	if ( id === "undefined" ) {
+		return res.status(400).json('incorrect form submission');
+	}
+
+	db('users').where({ id })
+	.update({
+		fk_complains_id: complainId,
+	})
+	.returning('*')
+	.then((result: any) => {
+		return res.status(200).json(result);
+	})
+	.catch((err: any) => res.status(400).json('Unable to log out'))
+};
