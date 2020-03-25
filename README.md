@@ -58,3 +58,8 @@ DROP TABLE IF EXISTS complains;
 
 ![alt txt](https://i.imgur.com/qqLd4JY.png)
 ![alt text](https://i.imgur.com/WGIehdC.png)
+
+
+* To change the complain status we have to click on yellow button
+* To Assign and Unassign complains, we have to click on Pickup/Unassign button
+![alt txt](https://i.imgur.com/MruNVAI.png)
