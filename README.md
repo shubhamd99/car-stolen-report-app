@@ -56,6 +56,11 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS complains;
 ```
 
+### Test cases (JEST)
+```
+npm run test:watch
+```
+
 ![alt txt](https://i.imgur.com/qqLd4JY.png)
 ![alt text](https://i.imgur.com/WGIehdC.png)
 
@@ -69,3 +74,4 @@ DROP TABLE IF EXISTS complains;
 
 Card CSS - https://codepen.io/alvaromontoro/pen/ebPEWb
 Profile Card CSS - https://codepen.io/msichterman/pen/zVmEpG
+Barebones - https://github.com/covalence-io/barebones-react-typescript-express

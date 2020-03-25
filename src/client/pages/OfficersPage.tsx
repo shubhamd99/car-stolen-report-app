@@ -8,7 +8,7 @@ import ProfileCard from '../components/ProfileCard';
 
 const OfficersPage: React.SFC = () => {
     const dispatch: any = useDispatch();
-    const complains = useSelector((state) => state.complains);
+    const complains = useSelector((state: any) => state.complains);
 
     useEffect(() => {
         dispatch(addComplains());
@@ -16,7 +16,7 @@ const OfficersPage: React.SFC = () => {
 
     const { id } = useParams();
 
-    const sortedComplains = complains.sort((a, b) => {
+    const sortedComplains = complains.sort((a: any, b: any) => {
         const c: any = new Date(b.createdAt);
         const d: any = new Date(a.createdAt);
         return c - d;
