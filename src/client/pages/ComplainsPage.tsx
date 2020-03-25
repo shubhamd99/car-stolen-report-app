@@ -5,7 +5,7 @@ import { postComplains } from '../store/actions';
 
 import { useInput } from '../utils/inputHook';
 
-const ComplainsPage: React.FC = () => {
+const ComplainsPage: React.SFC = () => {
     const dispatch: any = useDispatch();
     const { value: customerName, bind: bindCustomerName, reset: resetCustomerName } = useInput('');
     const { value: customerPhoneNumber, bind: bindCustomerPhoneNumber, reset: resetCustomerPhoneNumber } = useInput('');
@@ -26,7 +26,7 @@ const ComplainsPage: React.FC = () => {
 
     return (
         <>
-            <NavBar />
+            <NavBar page="home" />
             <div className="hero-wrap" >
                     <div className="container">
                         <div className="row no-gutters slider-text align-items-center justify-content-start">

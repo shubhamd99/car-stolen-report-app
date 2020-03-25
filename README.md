@@ -1,6 +1,9 @@
 # Stolen Cars Complain App
 
 ## Note: Authentication is not added, only API Endpoints are there
+Since Authentication is not there i'm displaying as two different page one for complains and other for police login
+* http://localhost:8000/home
+* http://localhost:8000/police/123
 
 Run the project --> npm run dev
 
