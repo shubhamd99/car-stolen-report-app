@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { addComplains } from '../store/actions';
 import NavBar from '../components/NavBar';
 import Cards from '../components/Cards';
+import ProfileCard from '../components/ProfileCard';
 
 const OfficersPage: React.SFC = () => {
     const dispatch: any = useDispatch();
@@ -34,8 +35,8 @@ const OfficersPage: React.SFC = () => {
                                     })
                                 }
                             </div>
-                            <div className="col-sm col-md ibox">
-                                One of two columns
+                            <div className="col-sm col-md ibox profile-card" style={{ padding: '0px' }}>
+                                <ProfileCard />
                             </div>
                     </div>
                 </div>

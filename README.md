@@ -63,3 +63,9 @@ DROP TABLE IF EXISTS complains;
 * To change the complain status we have to click on yellow button
 * To Assign and Unassign complains, we have to click on Pickup/Unassign button
 ![alt txt](https://i.imgur.com/MruNVAI.png)
+
+![alt txt](https://i.imgur.com/nBbelwT.png)
+
+
+Card CSS - https://codepen.io/alvaromontoro/pen/ebPEWb
+Profile Card CSS - https://codepen.io/msichterman/pen/zVmEpG
