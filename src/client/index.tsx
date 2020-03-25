@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
-import { reducer, initialState } from "../store/reducer";
+import { reducer, initialState } from "./store/reducer";
 import App from './containers/App';
 import './scss/App';
 
