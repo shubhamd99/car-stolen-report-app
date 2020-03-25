@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 // Create Complains
 export const handlePostComplains = async (req: Request, res: Response, db: any) => {
-	const { carModelNumber, note } = req.body;
+	const { carModelNumber, note, customerName, cutomerPhoneNumber } = req.body;
 
 	// select * from users where status = 'online' and fk_complains_id is null;
 	const officersOnline = await db('users').where({ status: 'online', fk_complains_id: null });
@@ -12,6 +12,8 @@ export const handlePostComplains = async (req: Request, res: Response, db: any) 
 		trx.insert({
 			car_model: carModelNumber,
 			notes: note,
+			customer_name: customerName,
+			customer_phone_number: cutomerPhoneNumber,
 		})
 		.into('complains')
 		.returning('*')

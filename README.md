@@ -4,6 +4,14 @@
 
 Run the project --> npm run dev
 
+## Workflow:
+1. On Login of the Officer we are assigning the un-assigned complains to his bucket in the backend.
+2. On Creating complains we are checking the officers that are online and not having a complain assined already, then we are assigning the complain to that officer.
+3. When we change the complain status to completed, we are un-assigning that complain from the officer making his bucket empty for other cases.
+
+## Proposed Solution
+We can create lambda in AWS that will trigger after some interval by the cron, that will take care of this assigning and unassigning of the complains.
+
 ### API Endpoints
 
 ```
@@ -23,6 +31,8 @@ CREATE extension "uuid-ossp";
 CREATE TABLE IF NOT EXISTS complains (
 	id uuid NOT NULL DEFAULT uuid_generate_v4(),
 	car_model text NOT NULL,
+	customer_name VARCHAR(100) NOT NULL,
+	customer_phone_number text NOT NULL,
 	notes jsonb,
 	is_completed BOOLEAN DEFAULT FALSE NOT NULL,
 	created_at TIMESTAMP without time zone DEFAULT now() NOT NULL,

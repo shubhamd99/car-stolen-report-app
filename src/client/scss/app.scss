@@ -1,5 +1,9 @@
-$theme-colors: (
-    'primary': #0091ea //Covalence Blue!  :D
-);
-
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "TopBar";
+@import "Hero";
+@import "Complains";
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
