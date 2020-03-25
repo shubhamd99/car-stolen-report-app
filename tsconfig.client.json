@@ -3,7 +3,7 @@
       "outDir": "./public/js/",
       "noImplicitAny": true,
       "module": "es6",
-      "target": "es5",
+      "target": "es6",
       "jsx": "react",
       "allowSyntheticDefaultImports": true,
       "allowJs": true,

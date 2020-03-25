@@ -1,8 +1,8 @@
 import * as express from 'express';
 import * as bcrypt from 'bcrypt';
 import * as knex from 'knex';
-import { handleSignin, handleRegister, handleLogout, handleGetComplains,
-handlePostComplains, handleUpdateComplainsStatus } from './controllers/auth';
+import { handleSignin, handleRegister, handleLogout } from './controllers/auth';
+import { handleGetComplains, handlePostComplains, handleUpdateComplainsStatus } from './controllers/complains';
 
 const db = knex({
     client: 'pg',
