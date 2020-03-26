@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS complains (
 	customer_phone_number text NOT NULL,
 	notes jsonb,
 	is_completed BOOLEAN DEFAULT FALSE NOT NULL,
-	created_at TIMESTAMP without time zone DEFAULT now() NOT NULL,
+	created_at TIMESTAMP without time zone NOT NULL,
 	CONSTRAINT complains_pkey PRIMARY KEY ( id )
 );
 
