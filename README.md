@@ -24,6 +24,7 @@ We can create lambda in AWS that will trigger after some interval by the cron, t
 /api/complains
 /api/complain
 /api/complains/:id
+/police/assign/:id
 ```
 
 ### Database Schema
@@ -54,11 +55,6 @@ CREATE TABLE IF NOT EXISTS users (
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS complains;
-```
-
-### Test cases (JEST)
-```
-npm run test:watch
 ```
 
 ![alt txt](https://i.imgur.com/qqLd4JY.png)
